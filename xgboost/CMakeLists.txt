@@ -1,21 +1,15 @@
-# should we use xgboost library
-option(USE_XGBOOST 
-  "Use XGBOOST Library" ON)
+# We need thread support
+find_package(Threads REQUIRED)
 
-if (USE_XGBOOST)
-	add_subdirectory(xgboost)
-	set (XGBOOST_RABIT_DIR "/home/u1796377/Workspace/DBEsti/build/src/xgboost/xgboost/src/xgboost-build")
-	set (XGBOOST_DMLC_DIR "${XGBOOST_RABIT_DIR}/dmlc-core")
-	#set (XGBOOST_OUTPUT_LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../build/src/xgboost/xgboost/src/xgboost/lib")
-	
-	include_directories(xgboost)
-	include_directories ("${XGBOOST_DMLC_DIR}")
-	include_directories ("${XGBOOST_RABIT_DIR}")
-	#include_directories(${XGBOOST_OUTPUT_LIB_DIR})
+# Enable ExternalProject CMake module
+include(ExternalProject)
 
-	set (EXTRA_LIBS ${EXTRA_LIBS} )
-	#set (EXTRA_LIBS ${EXTRA_LIBS}   ${XGBOOST_DMLC_DIR}/libdmlc.a) #${XGBOOST_RABIT_DIR}/librabit.a
-endif (USE_XGBOOST)
-
-
-
+ExternalProject_Add(xgboost
+    GIT_REPOSITORY "https://github.com/dmlc/xgboost.git"
+    GIT_TAG "release_0.80"
+    UPDATE_COMMAND ""
+    PATCH_COMMAND ""
+    PREFIX ${CMAKE_CURRENT_BINARY_DIR}/xgboost
+    # Disable install step
+    INSTALL_COMMAND "")
+    
