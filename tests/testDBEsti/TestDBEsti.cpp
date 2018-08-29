@@ -1,26 +1,26 @@
 #include <string>
-#include "TestSampleLib1.hpp"
-#include "sample_lib_1.hpp"
+#include "TestDBEsti.hpp"
+#include "../../src/DBEsti.hpp"
 
-using namespace google_test_sample;
+using namespace DBEsti_ns;
 using namespace std;
 
-TestSampleLib1::TestSampleLib1() {}
+TestDBEsti::TestDBEsti() {}
 
-TestSampleLib1::~TestSampleLib1() {};
+TestDBEsti::~TestDBEsti() {};
 
-void TestSampleLib1::SetUp() {};
+void TestDBEsti::SetUp() {};
 
-void TestSampleLib1::TearDown() {};
+void TestDBEsti::TearDown() {};
 
 TEST(getNameTest, ShouldReturnSampleLib1Name) {
-    auto sampleLib1 = SampleLib1();
+    auto sampleLib1 = DBEsti();
     const char *result = "SampleLib1";
     ASSERT_STREQ(sampleLib1.getName().c_str(),result);
 }
 
 TEST(getFullNameTest, ShouldReturnBothSampleLib1AndSampleLib2Name) {
-    auto sampleLib1 = SampleLib1();
+    auto sampleLib1 = DBEsti();
     const char *result = "SampleLib1SampleLib2";
     ASSERT_STREQ(sampleLib1.getFullName().c_str(),result);
 }

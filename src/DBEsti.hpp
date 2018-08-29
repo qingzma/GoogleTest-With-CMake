@@ -2,10 +2,10 @@
 
 using namespace std;
 
-namespace google_test_sample {
-    class SampleLib1 {
+namespace DBEsti_ns {
+    class DBEsti {
         public:
-            SampleLib1();
+            DBEsti();
             string getName();
             string getFullName();
     };
